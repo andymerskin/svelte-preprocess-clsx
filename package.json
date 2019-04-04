@@ -23,9 +23,6 @@
   },
   "homepage": "https://github.com/docmars/svelte-preprocess-clsx#readme",
   "devDependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "clsx": "^1.0.3",
-    "cssesc": "^3.0.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-standard": "^12.0.0",
@@ -34,5 +31,10 @@
     "eslint-plugin-standard": "^4.0.0",
     "svelte": "^2.16.1",
     "svelte-preprocess": "^2.5.1"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "clsx": "^1.0.3",
+    "cssesc": "^3.0.0"
   }
 }
