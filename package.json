@@ -25,6 +25,7 @@
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",
     "clsx": "^1.0.3",
+    "cssesc": "^3.0.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-standard": "^12.0.0",

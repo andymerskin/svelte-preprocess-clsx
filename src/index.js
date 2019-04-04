@@ -1,48 +1,73 @@
-const cheerio = require('cheerio');
+const $ = require('cheerio');
+const cssesc = require('cssesc');
+const clsx = require('clsx/dist/clsx.js');
+
+const cssescOpts = {
+  isIdentifier: true
+};
 
 function sveltePreprocessClsx(options = {}) {
   const {
     moduleName = 'styles',
-    clsxHelper = 'clsx',
-    moduleAttribute = '\\:class',
-    clsxAttribute = '\\@class',
+    clsxHelper = 'clsxHelper',
+    moduleAttribute = ':class',
+    clsxAttribute = '@class',
     modules = true,
     clsx = true
   } = options;
 
-  const transformer = ({ content, filename }) => {
-    const template = cheerio.load(content, {
+  const transformer = ({ content }) => {
+    const template = $.load(content, {
       xmlMode: true,
       decodeEntities: false
     });
 
     // Handle CSS modules
     if (modules) {
-      const attr = `[${moduleAttribute}]`;
-      const queryModules = template.find(attr);
+      const escapedSelector = cssesc(moduleAttribute, cssescOpts);
+      const queryModules = template(`[${escapedSelector}]`);
       queryModules.each((i, el) => {
-        let classes = el.attr(attr).split(' ');
-        classes = classes.map(className => `{${moduleName}.className}`);
-        el.addClass(classes.join(' '));
-        el.removeAttr(attr);
+        const $el = $(el);
+        let classes = $el.attr(moduleAttribute).split(' ');
+        classes = classes.map(className => `{${moduleName}.${className}}`);
+        $el.addClass(classes.join(' '));
+        $el.removeAttr(moduleAttribute);
       });
     }
 
     // Handle CLSX
     if (clsx) {
-      const attr = `[${clsxAttribute}]`;
-      const queryClsx = template.find(attr);
+      const escapedSelector = cssesc(clsxAttribute, cssescOpts);
+      const queryClsx = template(`[${escapedSelector}]`);
       queryClsx.each((i, el) => {
-        const expression = el.attr(attr);
-        const clsxString = `{${clsxHelper}(${expression})}`;
-        const className = el.attr('class');
-        el.attr('class', `${className} ${clsxString}`);
-        el.removeAttr(attr);
+        const $el = $(el);
+        const expression = $el.attr(clsxAttribute);
+        const clsxString = `{${clsxHelper}(${expression},${modules ? moduleName : false})}`;
+        $el.addClass(clsxString);
+        $el.removeAttr(clsxAttribute);
       });
+    }    
+
+    return {
+      code: template.html()
     }
   };
 
   return transformer;
 }
 
-module.exports = sveltePreprocessClsx;
+function clsxHelper(expression, moduleName) { 
+  if (moduleName) {
+    const classNames = clsx(expression);
+    return classNames
+      .split(' ')
+      .map(className => moduleName[className])
+      .join(' ');
+  }
+  return clsx(expression);
+}
+
+module.exports = {
+  sveltePreprocessClsx,
+  clsxHelper
+};
