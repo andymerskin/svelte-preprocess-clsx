@@ -1,4 +1,3 @@
-const clsx = require('clsx');
 const cheerio = require('cheerio');
 
 function sveltePreprocessClsx(options = {}) {
