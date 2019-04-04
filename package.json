@@ -1,0 +1,37 @@
+{
+  "name": "svelte-preprocess-clsx",
+  "version": "1.0.0-alpha.1",
+  "description": "A magic template transformer with CLSX support for svelte-preprocess.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/docmars/svelte-preprocess-clsx.git"
+  },
+  "keywords": [
+    "svelte",
+    "preprocess",
+    "css modules",
+    "clsx"
+  ],
+  "author": "Andy Merskin <andrew.merskin@ihsmarkit.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/docmars/svelte-preprocess-clsx/issues"
+  },
+  "homepage": "https://github.com/docmars/svelte-preprocess-clsx#readme",
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "clsx": "^1.0.3",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "svelte": "^2.16.1",
+    "svelte-preprocess": "^2.5.1"
+  }
+}

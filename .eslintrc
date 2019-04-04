@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "extends": [
+    "standard",
+    "prettier",
+    "prettier/standard"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "modules": true
+    }
+  }
+}
