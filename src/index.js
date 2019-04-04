@@ -38,7 +38,7 @@ function sveltePreprocessClsx(options = {}) {
         const clsxString = `{${clsxHelper}(${expression})}`;
         const className = el.attr('class');
         el.attr('class', `${className} ${clsxString}`);
-        el.removeAttr(`${clsxAttribute}`);
+        el.removeAttr(attr);
       });
     }
   };
