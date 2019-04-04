@@ -1,7 +1,7 @@
 {
   "name": "svelte-preprocess-clsx",
   "version": "1.0.0-alpha.1",
-  "description": "A magic template transformer with CLSX support for svelte-preprocess.",
+  "description": "A magic template transformer with CLSX and CSS Modules support for svelte-preprocess.",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
