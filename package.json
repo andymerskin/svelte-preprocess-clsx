@@ -1,6 +1,6 @@
 {
   "name": "svelte-preprocess-clsx",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.3",
   "description": "A magic template transformer with CLSX and CSS Modules support for svelte-preprocess.",
   "main": "src/index.js",
   "scripts": {
